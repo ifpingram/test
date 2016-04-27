@@ -6,10 +6,12 @@ class EnquiryEvent
 {
     private $event;
     private $converter;
+    private $store;
 
-    public function __construct($event_converter)
+    public function __construct($converter, $store)
     {
-        $this->converter = $event_converter;
+        $this->converter = $converter;
+        $this->store = $store;
     }
 
     public function load($event)
@@ -24,6 +26,6 @@ class EnquiryEvent
 
     public function insert()
     {
-        dd('THIS ENQUIRY EVENT GOES INTO MONGO : ' . $this->event);
+        $this->store->store('An Enquiry Event : ' . $this->event);
     }
 }

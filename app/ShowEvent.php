@@ -6,10 +6,12 @@ class ShowEvent
 {
     private $event;
     private $converter;
+    private $store;
 
-    public function __construct($event_converter)
+    public function __construct($converter, $store)
     {
-        $this->converter = $event_converter;
+        $this->converter = $converter;
+        $this->store = $store;
     }
 
     public function load($event)
@@ -24,6 +26,6 @@ class ShowEvent
 
     public function insert()
     {
-        dd('THIS SHOW EVENT GOES INTO REDIS : ' . $this->event);
+        $this->store->store('A Show Event : ' . $this->event);
     }
 }
