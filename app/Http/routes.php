@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -27,5 +28,7 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/search/{id}', 'InsertController@search');
+    Route::get('/show/{id}', 'InsertController@show');
+    Route::get('/enquiry/{id}', 'InsertController@enquiry');
 });
